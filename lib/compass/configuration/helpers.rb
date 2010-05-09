@@ -98,7 +98,7 @@ module Compass
       # Returns a full path to the relative path to the project directory
       def projectize(path, project_path = nil)
         project_path ||= configuration.project_path
-        File.join(project_path, *path.split('/'))
+        File.expand_path(path, project_path)
       end
 
       def deprojectize(path, project_path = nil)
