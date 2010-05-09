@@ -23,6 +23,9 @@ module Compass
     end
 
     def stylesheet_name(sass_file)
+      if sass_file[0, from.length] != from
+          raise Compass::Error, "#{sass_file} is outside sass source dir (#{from})"
+      end
       sass_file[("#{from}/".length)..-6]
     end
 
